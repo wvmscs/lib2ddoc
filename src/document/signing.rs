@@ -2,6 +2,7 @@ use crate::{security::check_signature};
 
 use super::{decoded::DocumentDecoded, error::{Error, ErrorKind}, raw::DocumentRaw};
 
+#[derive(Debug)]
 pub struct Signing{
     pub valid: bool
 }

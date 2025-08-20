@@ -2,6 +2,7 @@ use crate::specifications::{DocumentSpecificationsStore, FieldSpecificationsStor
 
 use super::decoded::{DocumentDecoded, field_zone::FieldZone};
 
+#[derive(Debug)]
 pub struct Validity{
     pub valid: bool
 }
