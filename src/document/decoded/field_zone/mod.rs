@@ -45,6 +45,7 @@ impl Field {
     }
 }
 
+#[derive(Debug)]
 pub struct FieldZone{
     pub zone: HashMap<String, Field>,
 }
