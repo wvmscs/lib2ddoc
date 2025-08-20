@@ -468,75 +468,49 @@ pub struct DmtxQuadruplet_struct {
 #[doc = " @struct DmtxQuadruplet"]
 #[doc = " @brief DmtxQuadruplet"]
 pub type DmtxQuadruplet = DmtxQuadruplet_struct;
-extern "C" {
+
+/* 
+unsafe extern "C" {
     pub fn dmtxTimeNow() -> DmtxTime;
-}
-extern "C" {
     pub fn dmtxTimeAdd(t: DmtxTime, msec: ::std::os::raw::c_long) -> DmtxTime;
-}
-extern "C" {
     pub fn dmtxTimeExceeded(timeout: DmtxTime) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxEncodeCreate() -> *mut DmtxEncode;
-}
-extern "C" {
     pub fn dmtxEncodeDestroy(enc: *mut *mut DmtxEncode) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxEncodeSetProp(
         enc: *mut DmtxEncode,
         prop: ::std::os::raw::c_int,
         value: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxEncodeGetProp(
         enc: *mut DmtxEncode,
         prop: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxEncodeDataMatrix(
         enc: *mut DmtxEncode,
         n: ::std::os::raw::c_int,
         s: *mut ::std::os::raw::c_uchar,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxEncodeDataMosaic(
         enc: *mut DmtxEncode,
         n: ::std::os::raw::c_int,
         s: *mut ::std::os::raw::c_uchar,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxDecodeCreate(img: *mut DmtxImage, scale: ::std::os::raw::c_int) -> *mut DmtxDecode;
-}
-extern "C" {
     pub fn dmtxDecodeDestroy(dec: *mut *mut DmtxDecode) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxDecodeSetProp(
         dec: *mut DmtxDecode,
         prop: ::std::os::raw::c_int,
         value: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxDecodeGetProp(
         dec: *mut DmtxDecode,
         prop: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxDecodeGetCache(
         dec: *mut DmtxDecode,
         x: ::std::os::raw::c_int,
         y: ::std::os::raw::c_int,
     ) -> *mut ::std::os::raw::c_uchar;
-}
-extern "C" {
     pub fn dmtxDecodeGetPixelValue(
         dec: *mut DmtxDecode,
         x: ::std::os::raw::c_int,
@@ -544,53 +518,35 @@ extern "C" {
         channel: ::std::os::raw::c_int,
         value: *mut ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxDecodeMatrixRegion(
         dec: *mut DmtxDecode,
         reg: *mut DmtxRegion,
         fix: ::std::os::raw::c_int,
     ) -> *mut DmtxMessage;
-}
-extern "C" {
     pub fn dmtxDecodePopulatedArray(
         sizeIdx: ::std::os::raw::c_int,
         msg: *mut DmtxMessage,
         fix: ::std::os::raw::c_int,
     ) -> *mut DmtxMessage;
-}
-extern "C" {
     pub fn dmtxDecodeMosaicRegion(
         dec: *mut DmtxDecode,
         reg: *mut DmtxRegion,
         fix: ::std::os::raw::c_int,
     ) -> *mut DmtxMessage;
-}
-extern "C" {
     pub fn dmtxDecodeCreateDiagnostic(
         dec: *mut DmtxDecode,
         totalBytes: *mut ::std::os::raw::c_int,
         headerBytes: *mut ::std::os::raw::c_int,
         style: ::std::os::raw::c_int,
     ) -> *mut ::std::os::raw::c_uchar;
-}
-extern "C" {
     pub fn dmtxRegionCreate(reg: *mut DmtxRegion) -> *mut DmtxRegion;
-}
-extern "C" {
     pub fn dmtxRegionDestroy(reg: *mut *mut DmtxRegion) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxRegionFindNext(dec: *mut DmtxDecode, timeout: *mut DmtxTime) -> *mut DmtxRegion;
-}
-extern "C" {
     pub fn dmtxRegionScanPixel(
         dec: *mut DmtxDecode,
         x: ::std::os::raw::c_int,
         y: ::std::os::raw::c_int,
     ) -> *mut DmtxRegion;
-}
-extern "C" {
     pub fn dmtxRegionUpdateCorners(
         dec: *mut DmtxDecode,
         reg: *mut DmtxRegion,
@@ -599,61 +555,41 @@ extern "C" {
         p11: DmtxVector2,
         p01: DmtxVector2,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxRegionUpdateXfrms(
         dec: *mut DmtxDecode,
         reg: *mut DmtxRegion,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxMessageCreate(
         sizeIdx: ::std::os::raw::c_int,
         symbolFormat: ::std::os::raw::c_int,
     ) -> *mut DmtxMessage;
-}
-extern "C" {
     pub fn dmtxMessageDestroy(msg: *mut *mut DmtxMessage) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxImageCreate(
         pxl: *mut ::std::os::raw::c_uchar,
         width: ::std::os::raw::c_int,
         height: ::std::os::raw::c_int,
         pack: ::std::os::raw::c_int,
     ) -> *mut DmtxImage;
-}
-extern "C" {
     pub fn dmtxImageDestroy(img: *mut *mut DmtxImage) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxImageSetChannel(
         img: *mut DmtxImage,
         channelStart: ::std::os::raw::c_int,
         bitsPerChannel: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxImageSetProp(
         img: *mut DmtxImage,
         prop: ::std::os::raw::c_int,
         value: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxImageGetProp(
         img: *mut DmtxImage,
         prop: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxImageGetByteOffset(
         img: *mut DmtxImage,
         x: ::std::os::raw::c_int,
         y: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxImageGetPixelValue(
         img: *mut DmtxImage,
         x: ::std::os::raw::c_int,
@@ -661,8 +597,6 @@ extern "C" {
         channel: ::std::os::raw::c_int,
         value: *mut ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxImageSetPixelValue(
         img: *mut DmtxImage,
         x: ::std::os::raw::c_int,
@@ -670,199 +604,114 @@ extern "C" {
         channel: ::std::os::raw::c_int,
         value: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxImageContainsInt(
         img: *mut DmtxImage,
         margin: ::std::os::raw::c_int,
         x: ::std::os::raw::c_int,
         y: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxImageContainsFloat(img: *mut DmtxImage, x: f64, y: f64) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxVector2AddTo(v1: *mut DmtxVector2, v2: *const DmtxVector2) -> *mut DmtxVector2;
-}
-extern "C" {
     pub fn dmtxVector2Add(
         vOut: *mut DmtxVector2,
         v1: *const DmtxVector2,
         v2: *const DmtxVector2,
     ) -> *mut DmtxVector2;
-}
-extern "C" {
     pub fn dmtxVector2SubFrom(v1: *mut DmtxVector2, v2: *const DmtxVector2) -> *mut DmtxVector2;
-}
-extern "C" {
     pub fn dmtxVector2Sub(
         vOut: *mut DmtxVector2,
         v1: *const DmtxVector2,
         v2: *const DmtxVector2,
     ) -> *mut DmtxVector2;
-}
-extern "C" {
     pub fn dmtxVector2ScaleBy(v: *mut DmtxVector2, s: f64) -> *mut DmtxVector2;
-}
-extern "C" {
     pub fn dmtxVector2Scale(
         vOut: *mut DmtxVector2,
         v: *const DmtxVector2,
         s: f64,
     ) -> *mut DmtxVector2;
-}
-extern "C" {
     pub fn dmtxVector2Cross(v1: *const DmtxVector2, v2: *const DmtxVector2) -> f64;
-}
-extern "C" {
     pub fn dmtxVector2Norm(v: *mut DmtxVector2) -> f64;
-}
-extern "C" {
     pub fn dmtxVector2Dot(v1: *const DmtxVector2, v2: *const DmtxVector2) -> f64;
-}
-extern "C" {
     pub fn dmtxVector2Mag(v: *const DmtxVector2) -> f64;
-}
-extern "C" {
     pub fn dmtxDistanceFromRay2(r: *const DmtxRay2, q: *const DmtxVector2) -> f64;
-}
-extern "C" {
     pub fn dmtxDistanceAlongRay2(r: *const DmtxRay2, q: *const DmtxVector2) -> f64;
-}
-extern "C" {
     pub fn dmtxRay2Intersect(
         point: *mut DmtxVector2,
         p0: *const DmtxRay2,
         p1: *const DmtxRay2,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxPointAlongRay2(
         point: *mut DmtxVector2,
         r: *const DmtxRay2,
         t: f64,
     ) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxMatrix3Copy(m0: *mut [f64; 3usize], m1: *mut [f64; 3usize]);
-}
-extern "C" {
     pub fn dmtxMatrix3Identity(m: *mut [f64; 3usize]);
-}
-extern "C" {
     pub fn dmtxMatrix3Translate(m: *mut [f64; 3usize], tx: f64, ty: f64);
-}
-extern "C" {
     pub fn dmtxMatrix3Rotate(m: *mut [f64; 3usize], angle: f64);
-}
-extern "C" {
     pub fn dmtxMatrix3Scale(m: *mut [f64; 3usize], sx: f64, sy: f64);
-}
-extern "C" {
     pub fn dmtxMatrix3Shear(m: *mut [f64; 3usize], shx: f64, shy: f64);
-}
-extern "C" {
     pub fn dmtxMatrix3LineSkewTop(m: *mut [f64; 3usize], b0: f64, b1: f64, sz: f64);
-}
-extern "C" {
     pub fn dmtxMatrix3LineSkewTopInv(m: *mut [f64; 3usize], b0: f64, b1: f64, sz: f64);
-}
-extern "C" {
     pub fn dmtxMatrix3LineSkewSide(m: *mut [f64; 3usize], b0: f64, b1: f64, sz: f64);
-}
-extern "C" {
     pub fn dmtxMatrix3LineSkewSideInv(m: *mut [f64; 3usize], b0: f64, b1: f64, sz: f64);
-}
-extern "C" {
     pub fn dmtxMatrix3Multiply(
         mOut: *mut [f64; 3usize],
         m0: *mut [f64; 3usize],
         m1: *mut [f64; 3usize],
     );
-}
-extern "C" {
     pub fn dmtxMatrix3MultiplyBy(m0: *mut [f64; 3usize], m1: *mut [f64; 3usize]);
-}
-extern "C" {
     pub fn dmtxMatrix3VMultiply(
         vOut: *mut DmtxVector2,
         vIn: *mut DmtxVector2,
         m: *mut [f64; 3usize],
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxMatrix3VMultiplyBy(
         v: *mut DmtxVector2,
         m: *mut [f64; 3usize],
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxMatrix3Print(m: *mut [f64; 3usize]);
-}
-extern "C" {
     pub fn dmtxSymbolModuleStatus(
         mapping: *mut DmtxMessage,
         sizeIdx: ::std::os::raw::c_int,
         row: ::std::os::raw::c_int,
         col: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxGetSymbolAttribute(
         attribute: ::std::os::raw::c_int,
         sizeIdx: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxGetBlockDataSize(
         sizeIdx: ::std::os::raw::c_int,
         blockIdx: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
     pub fn dmtxByteListBuild(
         storage: *mut DmtxByte,
         capacity: ::std::os::raw::c_int,
     ) -> DmtxByteList;
-}
-extern "C" {
     pub fn dmtxByteListInit(
         list: *mut DmtxByteList,
         length: ::std::os::raw::c_int,
         value: DmtxByte,
         passFail: *mut ::std::os::raw::c_uint,
     );
-}
-extern "C" {
     pub fn dmtxByteListClear(list: *mut DmtxByteList);
-}
-extern "C" {
     pub fn dmtxByteListHasCapacity(list: *mut DmtxByteList) -> ::std::os::raw::c_uint;
-}
-extern "C" {
     pub fn dmtxByteListCopy(
         dst: *mut DmtxByteList,
         src: *const DmtxByteList,
         passFail: *mut ::std::os::raw::c_uint,
     );
-}
-extern "C" {
     pub fn dmtxByteListPush(
         list: *mut DmtxByteList,
         value: DmtxByte,
         passFail: *mut ::std::os::raw::c_uint,
     );
-}
-extern "C" {
     pub fn dmtxByteListPop(
         list: *mut DmtxByteList,
         passFail: *mut ::std::os::raw::c_uint,
     ) -> DmtxByte;
-}
-extern "C" {
     pub fn dmtxByteListPrint(list: *mut DmtxByteList, prefix: *mut ::std::os::raw::c_char);
-}
-extern "C" {
     pub fn dmtxVersion() -> *mut ::std::os::raw::c_char;
 }
+    */

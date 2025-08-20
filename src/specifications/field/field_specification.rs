@@ -1,5 +1,6 @@
 use crate::specifications::{Error, ErrorKind, Specification};
 
+#[allow(dead_code)]
 pub struct FieldSpecification{
     pub id: &'static str,
     pub nom: &'static str,

@@ -17,6 +17,7 @@ impl ImageFileDecoder for Decoder {
             jpeg_decoder::PixelFormat::L8 => PackOrder::Pack8bppK,
             jpeg_decoder::PixelFormat::RGB24 => PackOrder::Pack24bppRGB,
             jpeg_decoder::PixelFormat::CMYK32 => PackOrder::Pack32bppCMYK,
+            jpeg_decoder::PixelFormat::L16 => todo!(),
         };
 
         Image {

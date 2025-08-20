@@ -20,8 +20,8 @@ struct HeadersJSON<'a>{
     pays_emetteur : Option<&'a str>,
 }
 
-impl <'a>From<&'a Headers> for HeadersJSON<'a> {
-    fn from(headers: &'a Headers) -> HeadersJSON{
+impl <'a> From <&'a Headers> for HeadersJSON<'a> {
+    fn from(headers: &'a Headers) -> HeadersJSON<'a> {
         let doc_spec = DocumentSpecificationsStore::get(&headers.type_document).expect("Can't happen because type is checked on decoding");
 
         HeadersJSON {
@@ -48,7 +48,7 @@ struct FieldJSON<'a>{
     errors: Option<Vec<String>>
 }
 
-impl <'a>From<&'a Field> for FieldJSON<'a> {
+impl <'a> From <&'a Field> for FieldJSON<'a> {
     fn from(field: &'a Field) -> Self {
         let field_spec = FieldSpecificationsStore::get(&field.id).expect("Impossible: Can't happen because id is checked on decoding");
 
@@ -73,15 +73,15 @@ struct DocumentJSON<'a>{
 }
 
 
-impl DocumentJSON<'_> {
-    fn create_message<'a>(fz: &'a FieldZone) -> HashMap<&'a str, FieldJSON>{
+impl<'a> DocumentJSON<'a> {
+    fn create_message(fz: &'a FieldZone) -> HashMap<&'a str, FieldJSON<'a> >{
         fz.zone.iter()
         .map(|(k,v)| (k.as_str(), v.into()) )
         .collect()
     }
 }
 
-impl <'a>From<&'a Document> for DocumentJSON<'a> {
+impl <'a> From <&'a Document> for DocumentJSON<'a> {
     fn from(document: &'a Document) -> Self {
         DocumentJSON { 
             is_ok: true,
@@ -102,7 +102,7 @@ struct ErrorJSON<'a>{
     value: &'a str
 }
 
-impl <'a>From<&'a ErrorDocument> for ErrorJSON<'a>{
+impl <'a> From <&'a ErrorDocument> for ErrorJSON<'a>{
     fn from(error: &'a ErrorDocument) -> Self {
         ErrorJSON{
             is_ok: false,

@@ -1,11 +1,11 @@
 use base32;
 use reqwest::StatusCode;
 use x509_parser::parse_x509_certificate;
-use p256::{PublicKey, ecdsa::{VerifyingKey, signature::{
-            Signature,
-            Verifier
-        }}, pkcs8::FromPublicKey
-    };
+use p256::{ecdsa::{signature::Verifier, Signature, VerifyingKey}, 
+                  elliptic_curve::generic_array::{GenericArray, typenum::U64}, 
+                  pkcs8::DecodePublicKey, 
+                  PublicKey};
+//use p256::pkcs8::DecodePublicKey;
 
 #[cfg(debug_assertions)]
 use super::test_data;
@@ -13,7 +13,7 @@ use super::test_data;
 
 fn decode_signature(signature: &str) -> Result<Vec<u8>, String> {
     base32::decode(
-        base32::Alphabet::RFC4648 { padding: true },
+        base32::Alphabet::Rfc4648 { padding: true },
         signature
     ).ok_or_else(|| String::from("Signature is not base32"))
 }
@@ -67,7 +67,12 @@ pub fn check_signature(data_zone: &str, signature: &str, authority_id: &str, cer
         .into();
 
     //Create the signature struct for p256, signature is the one from QR code
-    let signature = Signature::from_bytes(signature.as_slice())
+    //use p256::ecdsa::signature::Signature as _;
+    //use generic_array::GenericArray;
+    //use generic_array::typenum::U64;
+
+    let signature_array = GenericArray::<u8, U64>::from_slice(&signature);
+    let signature = Signature::from_bytes(signature_array)
         .map_err(|_| String::from("Can't parse signature"))?;
 
     //Do the verification on the public key, data against signature.

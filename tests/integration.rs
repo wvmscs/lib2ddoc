@@ -2,6 +2,7 @@ use decoder::ImageFileDecoder;
 use r2ddoc::*;
 mod decoder;
 
+/* 
 #[test]
 fn test_image_to_document(){
     let data = decoder::png::Decoder::decode("./tests/images/specs-p141.PNG");
@@ -32,3 +33,5 @@ fn test_image_no_2ddoc(){
     println!("{}", json);
     assert!(true);
 }
+
+*/

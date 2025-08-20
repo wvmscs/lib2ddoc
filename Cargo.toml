@@ -1,7 +1,7 @@
 [package]
 name = "lib2ddoc"
 version = "0.1.0"
-edition = "2018"
+edition = "2024"
 build = "build.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -10,20 +10,32 @@ name = "r2ddoc"
 crate-type = ["cdylib", "rlib"] # Creates dynamic lib
 
 [dependencies]
-p256 = "0.9.0"
-base32 = "0.4.0"
-x509-parser = "0.12.0"
-rsa = "0.5.0"
+p256 = "0.13.2"
+base32 = "0.5.1"
+x509-parser = "0.17.0"
+rsa = "0.9.8"
 sha256 = "1.0.2"
 ascii = "1.0.0"
 serde = { version = "1.0.103", features = ["derive"] }
 serde_json = "1.0.70"
-reqwest = { version = "0.11", features = ["blocking"] }
+reqwest = { version = "0.12.22", features = ["blocking"] }
 lazy_static = "1.4.0"
+datamatrix = "0.3.2"
+#generic-array = "1.2.0"
+
+uniffi = { version = "0.29.4", features = [ "cli" ] }
+uniffi_bindgen = "0.29.4"
 
 [dev-dependencies]
-jpeg-decoder = "0.1.22"
+jpeg-decoder = "0.3.2"
 png = "0.17.2"
 
 [build-dependencies]
 serde_json = "1.0.70"
+uniffi = { version = "0.29.4", features = [ "build" ] }
+
+#[[bin]]
+#name = "testbuild"
+#path = "build.rs"
+
+

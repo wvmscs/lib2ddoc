@@ -2,6 +2,7 @@ use std::{collections::HashSet, iter::FromIterator};
 
 use crate::specifications::{Error, Specification, ErrorKind};
 
+#[allow(dead_code)]
 pub struct DocumentSpecification {
     pub id: &'static str,
     pub type_document: &'static str,

@@ -1,9 +1,12 @@
+uniffi::setup_scaffolding!();
+// This file is part of lib2ddoc, a library for 2D document processing.
+
 use std::{convert::TryInto, ffi::CString, os::raw::c_char, slice};
 
 use crate::{PackOrder, data_to_json, image_to_json};
 
-#[no_mangle]
-pub extern "C" fn lib2ddoc_data_to_json(data: *const u8, size: usize) -> *const c_char{
+//#[uniffi::export]
+ fn lib2ddoc_data_to_json(data: *const u8, size: usize) -> *const c_char{
 
     let data= to_slide(data, size);
 
@@ -16,8 +19,8 @@ pub extern "C" fn lib2ddoc_data_to_json(data: *const u8, size: usize) -> *const 
 
 //image_to_json(pxls: &[u8], width: u32, height: u32, format: PackOrder) -> String {
 
-#[no_mangle]
-pub extern "C" fn lib2ddoc_image_to_json(pxls: *const u8, width: usize, height: usize, format: PackOrder) -> *const c_char{
+//#[uniffi::export]
+ fn lib2ddoc_image_to_json(pxls: *const u8, width: usize, height: usize, format: PackOrder) -> *const c_char{
 
     //We recover the number of bytes per pixel from the format (to later allocate the correct slide in Rust from C FFI)
     //To implement 1bppK, verify that width*height is multiple of 8
@@ -51,8 +54,8 @@ pub extern "C" fn lib2ddoc_image_to_json(pxls: *const u8, width: usize, height: 
     c_string.into_raw()
 }
 
-#[no_mangle]
-pub extern "C" fn lib2ddoc_free_json(data: *mut c_char){
+//#[uniffi::export]
+ fn lib2ddoc_free_json(data: *mut c_char){
     unsafe { CString::from_raw(data) };
 }
 

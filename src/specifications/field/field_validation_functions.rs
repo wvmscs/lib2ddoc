@@ -201,7 +201,7 @@ pub fn validate_f_URL(str: &str, truncated: bool) -> Result<(), Error>{
         })
     }  
     let str_raw = base32::decode(
-        base32::Alphabet::RFC4648 { padding: true },
+        base32::Alphabet::Rfc4648 { padding: true },
         str
     );
     let verifie=str_raw.is_some();

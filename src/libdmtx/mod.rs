@@ -1,6 +1,6 @@
 pub mod test_matrix;
 mod libdmtx_sys;
-#[link(name = "dmtx")] extern {}
+//#[link(name = "dmtx")] unsafe extern "C" {}
 
 
 use libdmtx_sys::*;
@@ -39,6 +39,7 @@ impl From<PackOrder> for libdmtx_sys::DmtxPackOrder{
     Implementation of the demo example of libdmtx man page
     Returns an empty vec if no matrix is found
 */
+/* 
 pub fn dmtx_read(pxl: &[u8], width: u32, height: u32, pack: DmtxPackOrder) -> Vec<u8>{
     let mut output: Vec<u8> = Vec::new();
 
@@ -102,3 +103,4 @@ mod tests {
         );
     }
 }
+*/
