@@ -2,6 +2,7 @@ use ascii::AsciiChar;
 
 use super::error::{Error, ErrorKind, ToError};
 
+#[derive(Debug)]
 pub struct DocumentRaw{
     pub data_zone: String,
     pub headers: String,
