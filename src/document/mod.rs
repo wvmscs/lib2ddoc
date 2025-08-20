@@ -11,6 +11,8 @@ pub use error::Error as ErrorDocument;
 pub use error::ErrorKind as ErrorDocumentKind;
 
 use error::ToError;
+
+#[derive(Debug)]
 pub struct Document{
     pub raw: DocumentRaw,
     pub decoded: DocumentDecoded,
